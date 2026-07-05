@@ -9,9 +9,10 @@
    ============================================================ */
 
 import Phaser from "phaser";
+import { PHASER_AVATAR_SIZE } from "./avatarConstants.js";
 
-const W = 360;
-const H = 480;
+const W = PHASER_AVATAR_SIZE.width;
+const H = PHASER_AVATAR_SIZE.height;
 
 const OUTFITS = {
   starter: { main: "#3B3A46", dark: "#1D1D25", light: "#5A5968", trim: "#777777" },
@@ -1074,7 +1075,7 @@ export class AvatarPhaserScene extends Phaser.Scene {
 
 export function createPhaserConfig(parent, scene) {
   return {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     width: W,
     height: H,
     parent,
@@ -1095,4 +1096,6 @@ export function createPhaserConfig(parent, scene) {
   };
 }
 
-export const PHASER_AVATAR_SIZE = { width: W, height: H };
+export function createAvatarPhaserGame(parent, scene) {
+  return new Phaser.Game(createPhaserConfig(parent, scene));
+}

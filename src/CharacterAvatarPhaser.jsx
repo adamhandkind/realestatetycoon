@@ -8,10 +8,10 @@
    sprite pipeline.
    ============================================================ */
 
-import React, { useEffect, useMemo, useRef } from "react";
-import Phaser from "phaser";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createAvatarModel, getVisibleCosmeticSlots } from "./avatarEngine.v3.js";
-import { AvatarPhaserScene, createPhaserConfig, PHASER_AVATAR_SIZE } from "./phaser/AvatarPhaserScene.js";
+import CharacterAvatarFallback from "./CharacterAvatarWeb.v3.jsx";
+import { PHASER_AVATAR_SIZE } from "./phaser/avatarConstants.js";
 
 function modelSignature(model) {
   const slots = getVisibleCosmeticSlots(model);
@@ -30,6 +30,7 @@ export default function CharacterAvatarPhaser(props) {
   const gameRef = useRef(null);
   const sceneRef = useRef(null);
   const pendingModelRef = useRef(null);
+  const [phaserUnavailable, setPhaserUnavailable] = useState(false);
 
   const model = useMemo(() => createAvatarModel({
     character: props.char || props.character,
@@ -51,33 +52,78 @@ export default function CharacterAvatarPhaser(props) {
 
   const signature = useMemo(() => modelSignature(model), [model]);
 
+  const handlePhaserError = useCallback((error) => {
+    console.error("Phaser avatar failed to render:", error);
+    sceneRef.current = null;
+    if (gameRef.current) {
+      gameRef.current.destroy(true);
+      gameRef.current = null;
+    }
+    setPhaserUnavailable(true);
+  }, []);
+
   useEffect(() => {
-    if (!hostRef.current || gameRef.current) return undefined;
+    if (!hostRef.current || gameRef.current || phaserUnavailable) return undefined;
 
-    const SceneClass = class RuntimeAvatarScene extends AvatarPhaserScene {
-      create() {
-        super.create();
-        sceneRef.current = this;
-        if (pendingModelRef.current) this.redraw(pendingModelRef.current);
+    let cancelled = false;
+
+    async function startPhaser() {
+      try {
+        const { AvatarPhaserScene, createAvatarPhaserGame } = await import("./phaser/AvatarPhaserScene.js");
+
+        if (cancelled || !hostRef.current || gameRef.current) return;
+
+        const SceneClass = class RuntimeAvatarScene extends AvatarPhaserScene {
+          create() {
+            try {
+              super.create();
+              sceneRef.current = this;
+              if (pendingModelRef.current) this.redraw(pendingModelRef.current);
+            } catch (error) {
+              handlePhaserError(error);
+            }
+          }
+        };
+
+        const game = createAvatarPhaserGame(hostRef.current, SceneClass);
+        gameRef.current = game;
+
+        requestAnimationFrame(() => {
+          if (!cancelled && hostRef.current && !hostRef.current.querySelector("canvas")) {
+            handlePhaserError(new Error("Phaser did not attach a canvas."));
+          }
+        });
+      } catch (error) {
+        if (!cancelled) handlePhaserError(error);
       }
-    };
+    }
 
-    const game = new Phaser.Game(createPhaserConfig(hostRef.current, SceneClass));
-    gameRef.current = game;
+    startPhaser();
 
     return () => {
+      cancelled = true;
       sceneRef.current = null;
       if (gameRef.current) {
         gameRef.current.destroy(true);
         gameRef.current = null;
       }
     };
-  }, []);
+  }, [handlePhaserError, phaserUnavailable]);
 
   useEffect(() => {
     pendingModelRef.current = model;
-    if (sceneRef.current) sceneRef.current.redraw(model);
-  }, [model, signature]);
+    if (!sceneRef.current) return;
+
+    try {
+      sceneRef.current.redraw(model);
+    } catch (error) {
+      handlePhaserError(error);
+    }
+  }, [handlePhaserError, model, signature]);
+
+  if (phaserUnavailable) {
+    return <CharacterAvatarFallback {...props} maxWidth={props.maxWidth || 360} />;
+  }
 
   const style = {
     "--ree-phaser-avatar-max-width": `${props.maxWidth || 360}px`,
