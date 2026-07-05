@@ -22,6 +22,9 @@ for (const character of CHARS) {
   }
 
   if (!model.traits.phaser) errors.push(`${character.id}: missing phaser traits.`);
+  if (model.traits.gender !== character.visual?.gender) errors.push(`${character.id}: gender did not reach avatar model.`);
+  if (model.traits.bodyFrame !== character.visual?.bodyFrame) errors.push(`${character.id}: bodyFrame did not reach avatar model.`);
+  if (model.traits.outfitBase !== character.visual?.outfitBase) errors.push(`${character.id}: outfitBase did not reach avatar model.`);
 }
 
 if (errors.length) {

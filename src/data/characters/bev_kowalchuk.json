@@ -15,9 +15,12 @@
     "hustle": 60
   },
   "visual": {
+    "gender": "female",
+    "bodyFrame": "curvy",
     "skin": "light",
     "hair": "practical_bob",
     "outfit": "floral",
+    "outfitBase": "cardigan",
     "hairColor": "#7B5A38",
     "accessories": [
       "cookies"

@@ -15,9 +15,12 @@
     "hustle": 54
   },
   "visual": {
+    "gender": "female",
+    "bodyFrame": "slim",
     "skin": "light",
     "hair": "luxury_long",
     "outfit": "linen",
+    "outfitBase": "tailored",
     "hairColor": "#D6A934",
     "hairHighlight": "#FFE28A",
     "accessories": [

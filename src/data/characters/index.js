@@ -35,6 +35,22 @@ export const CHARS = [
 
 export const CHARACTER_BY_ID = Object.fromEntries(CHARS.map((character) => [character.id, character]));
 
+const GENDER_OPTIONS = new Set(["male", "female", "unspecified"]);
+const BODY_FRAME_OPTIONS = new Set(["standard", "broad", "slim", "compact", "feminine", "curvy"]);
+const OUTFIT_BASE_OPTIONS = new Set([
+  "casual",
+  "suit",
+  "blazer",
+  "tailored",
+  "dress",
+  "cardigan",
+  "zip_jacket",
+  "streetwear",
+  "western",
+  "workwear",
+  "coat",
+]);
+
 export function getCharacterById(id) {
   return CHARACTER_BY_ID[id] || null;
 }
@@ -55,6 +71,9 @@ export function validateCharacter(character) {
     if (!Number.isFinite(stats[key])) errors.push("stats." + key + " must be a number.");
   }
   const visual = character?.visual || {};
+  if (visual.gender !== undefined && !GENDER_OPTIONS.has(visual.gender)) errors.push("visual.gender is not supported.");
+  if (visual.bodyFrame !== undefined && !BODY_FRAME_OPTIONS.has(visual.bodyFrame)) errors.push("visual.bodyFrame is not supported.");
+  if (visual.outfitBase !== undefined && !OUTFIT_BASE_OPTIONS.has(visual.outfitBase)) errors.push("visual.outfitBase is not supported.");
   if (!visual.skin) errors.push("visual.skin is required.");
   if (!visual.hair) errors.push("visual.hair is required.");
   if (!visual.outfit) errors.push("visual.outfit is required.");

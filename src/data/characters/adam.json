@@ -15,9 +15,12 @@
     "hustle": 72
   },
   "visual": {
+    "gender": "male",
+    "bodyFrame": "standard",
     "skin": "medium",
     "hair": "short_messy",
     "outfit": "starter",
+    "outfitBase": "casual",
     "hairColor": "#151515",
     "accessories": []
   },

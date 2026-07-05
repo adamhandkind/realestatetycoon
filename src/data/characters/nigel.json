@@ -15,9 +15,12 @@
     "hustle": 83
   },
   "visual": {
+    "gender": "male",
+    "bodyFrame": "compact",
     "skin": "warm",
     "hair": "balding",
     "outfit": "bespoke",
+    "outfitBase": "suit",
     "hairColor": "#2E2018",
     "accessories": [
       "glasses",

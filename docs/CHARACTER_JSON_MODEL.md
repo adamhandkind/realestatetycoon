@@ -96,17 +96,59 @@ These are the core character traits consumed by the avatar engine and Phaser ren
 
 ```json
 "visual": {
+  "gender": "unspecified",
+  "bodyFrame": "standard",
   "skin": "medium",
   "hair": "short_messy",
   "hairColor": "#151515",
   "hairHighlight": "#4A4A4A",
   "outfit": "starter",
+  "outfitBase": "casual",
   "shoes": "default",
   "hat": "none",
   "eyeColor": "#3A2A1A",
   "accessories": []
 }
 ```
+
+### Current gender options
+
+```text
+male
+female
+unspecified
+```
+
+`gender` is descriptive roster metadata. The renderer uses `bodyFrame` and `outfitBase` for the actual silhouette and clothing construction, so characters can be tuned without hard-coding assumptions.
+
+### Current body frame options
+
+```text
+standard
+broad
+slim
+compact
+feminine
+curvy
+```
+
+### Current outfit base options
+
+```text
+casual
+suit
+blazer
+tailored
+dress
+cardigan
+zip_jacket
+streetwear
+western
+workwear
+coat
+```
+
+`outfit` chooses the named wardrobe item and palette. `outfitBase` chooses the underlying construction lines and silhouette treatment.
 
 ### Current skin options
 

@@ -15,9 +15,12 @@
     "hustle": 50
   },
   "visual": {
+    "gender": "female",
+    "bodyFrame": "curvy",
     "skin": "light",
     "hair": "voluminous",
     "outfit": "realtor_pink",
+    "outfitBase": "dress",
     "hairColor": "#F0C957",
     "hairHighlight": "#FFF0A8",
     "accessories": [

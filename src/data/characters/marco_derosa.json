@@ -15,9 +15,12 @@
     "hustle": 98
   },
   "visual": {
+    "gender": "male",
+    "bodyFrame": "standard",
     "skin": "warm",
     "hair": "slicked",
     "outfit": "hustler",
+    "outfitBase": "zip_jacket",
     "hairColor": "#101010",
     "accessories": [
       "headset",

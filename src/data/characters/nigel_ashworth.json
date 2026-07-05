@@ -15,9 +15,12 @@
     "hustle": 66
   },
   "visual": {
+    "gender": "male",
+    "bodyFrame": "slim",
     "skin": "warm",
     "hair": "balding",
     "outfit": "burgundy_suit",
+    "outfitBase": "suit",
     "hairColor": "#2E2018",
     "accessories": [
       "cane",

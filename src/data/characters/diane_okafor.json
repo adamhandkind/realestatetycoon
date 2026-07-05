@@ -15,9 +15,12 @@
     "hustle": 58
   },
   "visual": {
+    "gender": "female",
+    "bodyFrame": "standard",
     "skin": "dark",
     "hair": "sharp_bob",
     "outfit": "bespoke",
+    "outfitBase": "suit",
     "hairColor": "#0A0A0A",
     "accessories": [
       "tablet"

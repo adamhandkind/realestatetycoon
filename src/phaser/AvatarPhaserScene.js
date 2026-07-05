@@ -55,6 +55,20 @@ function palette(traits) {
   };
 }
 
+function bodyMetrics(traits) {
+  const frame = traits.bodyFrame || "standard";
+  const metrics = {
+    standard: { shoulder: 68, waist: 54, hip: 58, legW: 21, legGap: 7, torsoTop: 218 },
+    broad: { shoulder: 78, waist: 62, hip: 62, legW: 24, legGap: 8, torsoTop: 216 },
+    slim: { shoulder: 60, waist: 46, hip: 52, legW: 18, legGap: 8, torsoTop: 219 },
+    compact: { shoulder: 62, waist: 52, hip: 56, legW: 20, legGap: 7, torsoTop: 222 },
+    feminine: { shoulder: 60, waist: 42, hip: 66, legW: 18, legGap: 9, torsoTop: 219 },
+    curvy: { shoulder: 64, waist: 44, hip: 76, legW: 20, legGap: 8, torsoTop: 218 },
+  };
+
+  return metrics[frame] || metrics.standard;
+}
+
 function addGraphics(scene, parent) {
   const g = scene.add.graphics();
   parent.add(g);
@@ -250,8 +264,9 @@ function drawLegs(scene, char, traits) {
   const g = addGraphics(scene, char);
   const outfit = palette(traits);
   const calf = traits.bodyMods?.calfImplants;
-  const legW = calf ? 28 : 21;
-  const gap = 7;
+  const m = bodyMetrics(traits);
+  const legW = calf ? m.legW + 7 : m.legW;
+  const gap = m.legGap;
   const left = -legW - gap / 2;
   const right = gap / 2;
   const legColor = traits.outfit === "trackpants" ? "#F4F1EA" : outfit.dark;
@@ -296,13 +311,17 @@ function drawBody(scene, char, traits) {
   const g = addGraphics(scene, char);
   const outfit = palette(traits);
   const butt = traits.bodyMods?.buttImplants;
-  const hip = butt ? 72 : 58;
+  const m = bodyMetrics(traits);
+  const shoulder = m.shoulder;
+  const waist = m.waist;
+  const hip = butt ? m.hip + 14 : m.hip;
+  const topY = m.torsoTop;
 
   if (["fur", "colour_fur"].includes(traits.outfit)) {
     g.fillStyle(hex(outfit.main), 0.94);
     g.lineStyle(6, hex("#050507"), 1);
-    g.fillEllipse(0, 306, 124, 210);
-    g.strokeEllipse(0, 306, 124, 210);
+    g.fillEllipse(0, 306, shoulder + 56, 210);
+    g.strokeEllipse(0, 306, shoulder + 56, 210);
     g.fillStyle(hex(outfit.dark), 0.55);
     g.beginPath();
     g.moveTo(0, 205);
@@ -324,45 +343,95 @@ function drawBody(scene, char, traits) {
   g.lineStyle(6, hex("#050507"), 1);
   g.fillStyle(hex(outfit.main), 1);
   g.beginPath();
-  g.moveTo(-34, 218);
-  g.quadraticCurveTo(0, 203, 34, 218);
+  g.moveTo(-shoulder / 2, topY);
+  g.quadraticCurveTo(0, topY - 16, shoulder / 2, topY);
+  g.quadraticCurveTo(waist / 2, 268, hip / 2, 322);
   g.lineTo(hip / 2, 322);
   g.quadraticCurveTo(0, 344, -hip / 2, 322);
+  g.quadraticCurveTo(-waist / 2, 268, -shoulder / 2, topY);
   g.closePath();
   g.fillPath();
   g.strokePath();
 
   g.fillStyle(hex(outfit.light), 0.22);
-  g.fillEllipse(0, 248, 54, 28);
+  g.fillEllipse(0, 248, waist, 28);
   g.lineStyle(2, hex(outfit.dark), 0.65);
   g.beginPath();
-  g.moveTo(0, 220);
+  g.moveTo(0, topY + 2);
   g.lineTo(0, 322);
   g.strokePath();
 
-  if (traits.outfit === "bespoke") {
+  if (["suit", "tailored"].includes(traits.outfitBase) || traits.outfit === "bespoke") {
     g.fillStyle(hex("#08080A"), 1);
     g.beginPath();
-    g.moveTo(-25, 218);
+    g.moveTo(-shoulder / 2 + 9, topY);
     g.lineTo(0, 256);
-    g.lineTo(-19, 292);
+    g.lineTo(-waist / 2 + 7, 292);
     g.closePath();
     g.fillPath();
     g.beginPath();
-    g.moveTo(25, 218);
+    g.moveTo(shoulder / 2 - 9, topY);
     g.lineTo(0, 256);
-    g.lineTo(19, 292);
+    g.lineTo(waist / 2 - 7, 292);
     g.closePath();
     g.fillPath();
-    g.fillStyle(hex("#C9A84C"), 1);
+    g.fillStyle(hex(outfit.trim || "#C9A84C"), 1);
     g.fillCircle(0, 276, 3);
     g.fillCircle(0, 298, 3);
   }
 
+  if (traits.outfitBase === "blazer") {
+    g.lineStyle(3, hex(outfit.trim), 0.85);
+    g.beginPath();
+    g.moveTo(-shoulder / 2 + 13, topY + 8);
+    g.lineTo(-waist / 2 + 6, 316);
+    g.moveTo(shoulder / 2 - 13, topY + 8);
+    g.lineTo(waist / 2 - 6, 316);
+    g.strokePath();
+    drawRoundedRect(g, -12, 236, 24, 9, 2, outfit.light, "#050507", 2);
+  }
+
+  if (traits.outfitBase === "dress") {
+    g.fillStyle(hex(outfit.light), 0.18);
+    g.beginPath();
+    g.moveTo(-waist / 2, 272);
+    g.lineTo(-hip / 2 - 6, 334);
+    g.quadraticCurveTo(0, 352, hip / 2 + 6, 334);
+    g.lineTo(waist / 2, 272);
+    g.closePath();
+    g.fillPath();
+    g.lineStyle(3, hex(outfit.trim), 0.9);
+    g.beginPath();
+    g.moveTo(-18, topY + 7);
+    g.quadraticCurveTo(0, topY + 30, 18, topY + 7);
+    g.strokePath();
+  }
+
+  if (traits.outfitBase === "cardigan") {
+    g.lineStyle(4, hex(outfit.trim), 0.75);
+    g.beginPath();
+    g.moveTo(-shoulder / 2 + 8, topY + 8);
+    g.quadraticCurveTo(-8, 264, -14, 322);
+    g.moveTo(shoulder / 2 - 8, topY + 8);
+    g.quadraticCurveTo(8, 264, 14, 322);
+    g.strokePath();
+  }
+
+  if (traits.outfitBase === "zip_jacket" || traits.outfitBase === "streetwear") {
+    g.lineStyle(4, hex(outfit.trim), 0.9);
+    g.beginPath();
+    g.moveTo(0, topY + 4);
+    g.lineTo(0, 318);
+    g.strokePath();
+    g.fillStyle(hex(outfit.trim), 1);
+    g.fillRect(-shoulder / 2 + 3, 238, 5, 78);
+    g.fillRect(shoulder / 2 - 8, 238, 5, 78);
+  }
+
   if (traits.outfit === "tracksuit" || traits.outfit === "influencer") {
     g.fillStyle(hex(outfit.trim), 1);
-    g.fillRect(-37, 225, 5, 94);
-    g.fillRect(32, 225, 5, 94);
+    g.fillRect(-shoulder / 2 - 3, 225, 5, 94);
+    g.fillRect(shoulder / 2 - 2, 225, 5, 94);
   }
 
   if (traits.outfit === "floral") {
@@ -380,9 +449,15 @@ function drawBody(scene, char, traits) {
     g.fillCircle(24, 238, 4);
   }
 
-  if (traits.outfit === "cowboy") {
+  if (traits.outfitBase === "western" || traits.outfit === "cowboy") {
     drawRoundedRect(g, -35, 312, 70, 12, 2, "#3A1A0A", "#050507", 2);
     drawRoundedRect(g, -14, 307, 28, 20, 3, "#C9A84C", "#050507", 2);
+    g.lineStyle(3, hex(outfit.trim), 0.9);
+    g.beginPath();
+    g.moveTo(-24, topY + 12);
+    g.lineTo(0, 254);
+    g.lineTo(24, topY + 12);
+    g.strokePath();
   }
 }
 

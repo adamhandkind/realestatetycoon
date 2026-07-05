@@ -10,6 +10,8 @@
    rewriting game logic.
    ============================================================ */
 
+import { getCharacterById } from "./data/characters/index.js";
+
 export const AVATAR_VERSION = "3.0.0";
 
 export const VIEWBOX = {
@@ -82,6 +84,24 @@ export const SLOT_PRIORITY = {
   vehicle: ["bentley", "gwagon", "viper", "motorcycle", "scooter", "moped", "kick_scooter"],
 };
 
+const OUTFIT_BASE_BY_OUTFIT = {
+  bespoke: "suit",
+  burgundy_suit: "suit",
+  compliance: "blazer",
+  linen: "tailored",
+  hustler: "zip_jacket",
+  influencer: "streetwear",
+  realtor_pink: "dress",
+  floral: "cardigan",
+  cowboy: "western",
+  denim: "workwear",
+  tracksuit: "streetwear",
+  trackpants: "casual",
+  fur: "coat",
+  colour_fur: "coat",
+  starter: "casual",
+};
+
 const LUNCH_SCENES = {
   car: "parking_lot",
   diner: "diner",
@@ -139,6 +159,29 @@ function layer(id, asset, z, props = {}) {
   return { id, asset, z, props };
 }
 
+function resolveCharacterProfile(character = {}) {
+  const registered = getCharacterById(character?.id);
+  if (!registered) return character || {};
+
+  return {
+    ...registered,
+    ...character,
+    stats: {
+      ...(registered.stats || {}),
+      ...(character.stats || {}),
+    },
+    visual: {
+      ...(registered.visual || {}),
+      ...(character.visual || {}),
+    },
+    phaser: {
+      ...(registered.phaser || {}),
+      ...(character.phaser || {}),
+    },
+    buffs: character.buffs || registered.buffs || [],
+  };
+}
+
 function resolveSkin(character, owned) {
   if (has(owned, "tan")) return "tan";
   if (character?.visual?.skin && SKIN_TONES[character.visual.skin]) return character.visual.skin;
@@ -172,6 +215,20 @@ function resolveOutfit(owned, character) {
   if (item === "tracksuit") return "tracksuit";
   if (item === "trackpants") return "trackpants";
   return character?.visual?.outfit || "starter";
+}
+
+function resolveGender(character) {
+  return character?.visual?.gender || "unspecified";
+}
+
+function resolveBodyFrame(character) {
+  if (character?.visual?.bodyFrame) return character.visual.bodyFrame;
+  if (character?.visual?.gender === "female") return "feminine";
+  return "standard";
+}
+
+function resolveOutfitBase(character, outfit) {
+  return character?.visual?.outfitBase || OUTFIT_BASE_BY_OUTFIT[outfit] || "casual";
 }
 
 function resolveVehicle(owned) {
@@ -244,7 +301,7 @@ function resolvePhaserProfile(character, outfit) {
 }
 
 export function deriveAvatarTraits(input = {}) {
-  const character = input.character || input.char || {};
+  const character = resolveCharacterProfile(input.character || input.char || {});
   const state = input.state || input.gameState || {};
   const owned = ownedSet(input.owned || state.owned || []);
   const activeLunch = input.activeLunch || state.activeLunch || "car";
@@ -289,6 +346,9 @@ export function deriveAvatarTraits(input = {}) {
     hairColor: character?.visual?.hairColor || "#111111",
     hairHighlight: character?.visual?.hairHighlight || "#4A4A4A",
     outfit,
+    gender: resolveGender(character),
+    bodyFrame: resolveBodyFrame(character),
+    outfitBase: resolveOutfitBase(character, outfit),
     vehicle: resolveVehicle(owned),
 
     bodyMods: {
@@ -363,6 +423,9 @@ export function getVisibleCosmeticSlots(model) {
     skin: t.skinKey,
     hair: t.hair,
     outfit: t.outfit,
+    gender: t.gender,
+    bodyFrame: t.bodyFrame,
+    outfitBase: t.outfitBase,
     vehicle: t.vehicle,
     shoes: t.shoes,
     hat: t.hat,

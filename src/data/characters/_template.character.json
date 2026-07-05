@@ -15,11 +15,14 @@
     "hustle": 50
   },
   "visual": {
+    "gender": "unspecified",
+    "bodyFrame": "standard",
     "skin": "medium",
     "hair": "short_messy",
     "hairColor": "#151515",
     "hairHighlight": "#4A4A4A",
     "outfit": "starter",
+    "outfitBase": "casual",
     "shoes": "default",
     "hat": "none",
     "eyeColor": "#3A2A1A",

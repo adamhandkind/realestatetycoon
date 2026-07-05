@@ -15,9 +15,12 @@
     "hustle": 43
   },
   "visual": {
+    "gender": "female",
+    "bodyFrame": "compact",
     "skin": "dark",
     "hair": "practical_bob",
     "outfit": "compliance",
+    "outfitBase": "blazer",
     "hairColor": "#1A1512",
     "accessories": [
       "clipboard"

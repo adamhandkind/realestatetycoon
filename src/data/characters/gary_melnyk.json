@@ -15,9 +15,12 @@
     "hustle": 27
   },
   "visual": {
+    "gender": "male",
+    "bodyFrame": "slim",
     "skin": "light",
     "hair": "side_part",
     "outfit": "compliance",
+    "outfitBase": "blazer",
     "hairColor": "#5A4630",
     "accessories": [
       "glasses",

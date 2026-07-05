@@ -15,9 +15,12 @@
     "hustle": 76
   },
   "visual": {
+    "gender": "male",
+    "bodyFrame": "slim",
     "skin": "medium",
     "hair": "tight_fade",
     "outfit": "influencer",
+    "outfitBase": "streetwear",
     "hairColor": "#090909",
     "accessories": [
       "big_phone",
