@@ -1,0 +1,42 @@
+{
+  "id": "crystal_voss",
+  "name": "Crystal Voss",
+  "title": "The Hot Girl Realtor",
+  "emoji": "✨",
+  "color": "#FF78C8",
+  "cash": 50000,
+  "swagger": 22,
+  "quote": "I literally just smile and they sign.",
+  "stats": {
+    "looks": 95,
+    "charisma": 80,
+    "communication": 20,
+    "knowledge": 5,
+    "hustle": 50
+  },
+  "visual": {
+    "skin": "light",
+    "hair": "voluminous",
+    "outfit": "realtor_pink",
+    "hairColor": "#F0C957",
+    "hairHighlight": "#FFF0A8",
+    "accessories": [
+      "big_phone",
+      "diamond_studs"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "power_stance",
+    "characterScale": 1.03,
+    "offsetX": 0,
+    "offsetY": -3,
+    "outfitPalette": {
+      "main": "#C94F99",
+      "dark": "#6C1F4C",
+      "light": "#FF9EDB",
+      "trim": "#FFE680"
+    }
+  },
+  "sortOrder": 50
+}

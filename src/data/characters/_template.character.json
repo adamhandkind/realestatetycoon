@@ -1,0 +1,42 @@
+{
+  "id": "new_character_id",
+  "name": "New Character Name",
+  "title": "The New Archetype",
+  "emoji": "🏘️",
+  "color": "#C9A84C",
+  "cash": 50000,
+  "swagger": 5,
+  "quote": "A short quote that shows their personality.",
+  "stats": {
+    "looks": 50,
+    "charisma": 50,
+    "communication": 50,
+    "knowledge": 50,
+    "hustle": 50
+  },
+  "visual": {
+    "skin": "medium",
+    "hair": "short_messy",
+    "hairColor": "#151515",
+    "hairHighlight": "#4A4A4A",
+    "outfit": "starter",
+    "shoes": "default",
+    "hat": "none",
+    "eyeColor": "#3A2A1A",
+    "accessories": []
+  },
+  "phaser": {
+    "defaultPose": "open_house",
+    "characterScale": 1,
+    "offsetX": 0,
+    "offsetY": 0,
+    "outfitPalette": {
+      "main": "#3B3A46",
+      "dark": "#1D1D25",
+      "light": "#5A5968",
+      "trim": "#C9A84C"
+    }
+  },
+  "buffs": [],
+  "sortOrder": 999
+}

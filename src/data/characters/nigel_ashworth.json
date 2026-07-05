@@ -1,0 +1,42 @@
+{
+  "id": "nigel_ashworth",
+  "name": "Nigel Ashworth",
+  "title": "The British One (From Brantford)",
+  "emoji": "🎩",
+  "color": "#B184FF",
+  "cash": 62000,
+  "swagger": 12,
+  "quote": "In Kensington, we call this a value-add opportunity. In Brantford, apparently it is a duplex.",
+  "stats": {
+    "looks": 36,
+    "charisma": 61,
+    "communication": 71,
+    "knowledge": 82,
+    "hustle": 66
+  },
+  "visual": {
+    "skin": "warm",
+    "hair": "balding",
+    "outfit": "burgundy_suit",
+    "hairColor": "#2E2018",
+    "accessories": [
+      "cane",
+      "pocket_square",
+      "moustache"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "cane_lean",
+    "characterScale": 1.01,
+    "offsetX": 2,
+    "offsetY": 0,
+    "outfitPalette": {
+      "main": "#491426",
+      "dark": "#16060B",
+      "light": "#8A2D47",
+      "trim": "#C9A84C"
+    }
+  },
+  "sortOrder": 110
+}

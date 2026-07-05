@@ -1,0 +1,41 @@
+{
+  "id": "marco_derosa",
+  "name": "Marco DeRosa",
+  "title": "The Hustler",
+  "emoji": "📞",
+  "color": "#E07B39",
+  "cash": 38000,
+  "swagger": 11,
+  "quote": "I got three calls, two coffees, and one guy who might sell if his cousin stops yelling.",
+  "stats": {
+    "looks": 45,
+    "charisma": 65,
+    "communication": 44,
+    "knowledge": 31,
+    "hustle": 98
+  },
+  "visual": {
+    "skin": "warm",
+    "hair": "slicked",
+    "outfit": "hustler",
+    "hairColor": "#101010",
+    "accessories": [
+      "headset",
+      "coffee"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "phone_panic",
+    "characterScale": 1.01,
+    "offsetX": 1,
+    "offsetY": 0,
+    "outfitPalette": {
+      "main": "#5E2519",
+      "dark": "#1F0D09",
+      "light": "#D46C3B",
+      "trim": "#E07B39"
+    }
+  },
+  "sortOrder": 70
+}

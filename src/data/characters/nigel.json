@@ -1,0 +1,41 @@
+{
+  "id": "nigel",
+  "name": "Nigel Cashflow",
+  "title": "Spreadsheet Landlord",
+  "emoji": "🧮",
+  "color": "#9B6FE8",
+  "cash": 58000,
+  "swagger": 8,
+  "quote": "The unit smells like opportunity.",
+  "stats": {
+    "looks": 48,
+    "charisma": 54,
+    "communication": 52,
+    "knowledge": 72,
+    "hustle": 83
+  },
+  "visual": {
+    "skin": "warm",
+    "hair": "balding",
+    "outfit": "bespoke",
+    "hairColor": "#2E2018",
+    "accessories": [
+      "glasses",
+      "moustache"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "cane_lean",
+    "characterScale": 1,
+    "offsetX": 2,
+    "offsetY": 0,
+    "outfitPalette": {
+      "main": "#15151A",
+      "dark": "#030305",
+      "light": "#303039",
+      "trim": "#9B6FE8"
+    }
+  },
+  "sortOrder": 40
+}

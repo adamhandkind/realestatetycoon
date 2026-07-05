@@ -1,0 +1,41 @@
+{
+  "id": "tyler_nguyen",
+  "name": "Tyler Nguyen",
+  "title": "The Influencer",
+  "emoji": "📱",
+  "color": "#9B6FE8",
+  "cash": 60000,
+  "swagger": 18,
+  "quote": "Just listed, just blessed, link in bio, offers by Tuesday.",
+  "stats": {
+    "looks": 70,
+    "charisma": 88,
+    "communication": 90,
+    "knowledge": 20,
+    "hustle": 76
+  },
+  "visual": {
+    "skin": "medium",
+    "hair": "tight_fade",
+    "outfit": "influencer",
+    "hairColor": "#090909",
+    "accessories": [
+      "big_phone",
+      "chain"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "open_house",
+    "characterScale": 1,
+    "offsetX": 0,
+    "offsetY": -1,
+    "outfitPalette": {
+      "main": "#25206B",
+      "dark": "#0D0B2D",
+      "light": "#9B6FE8",
+      "trim": "#72E1FF"
+    }
+  },
+  "sortOrder": 90
+}

@@ -1,0 +1,23 @@
+{
+  "name": "real-estate-empire",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "smoke": "node tests/smoke-full.js",
+    "generate:characters": "node scripts/generate-character-registry.js",
+    "check:characters": "node tests/character-data.js"
+  },
+  "dependencies": {
+    "phaser": "^3.90.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
+    "vite": "^8.1.3"
+  }
+}

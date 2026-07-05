@@ -1,0 +1,40 @@
+{
+  "id": "bev",
+  "name": "Bev By-The-Book",
+  "title": "Compliance Menace",
+  "emoji": "📋",
+  "color": "#4ABFB0",
+  "cash": 47000,
+  "swagger": 3,
+  "quote": "I brought the permit package and squares.",
+  "stats": {
+    "looks": 42,
+    "charisma": 45,
+    "communication": 76,
+    "knowledge": 88,
+    "hustle": 43
+  },
+  "visual": {
+    "skin": "dark",
+    "hair": "practical_bob",
+    "outfit": "compliance",
+    "hairColor": "#1A1512",
+    "accessories": [
+      "clipboard"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "open_house",
+    "characterScale": 0.98,
+    "offsetX": 0,
+    "offsetY": 2,
+    "outfitPalette": {
+      "main": "#28455F",
+      "dark": "#102233",
+      "light": "#6FA3C7",
+      "trim": "#4ABFB0"
+    }
+  },
+  "sortOrder": 30
+}

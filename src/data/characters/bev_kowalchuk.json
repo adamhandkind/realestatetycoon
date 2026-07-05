@@ -1,0 +1,40 @@
+{
+  "id": "bev_kowalchuk",
+  "name": "Bev Kowalchuk",
+  "title": "The Mom Energy Agent",
+  "emoji": "🍪",
+  "color": "#D8A85B",
+  "cash": 44000,
+  "swagger": 5,
+  "quote": "Eat something before you sign anything. I brought squares.",
+  "stats": {
+    "looks": 40,
+    "charisma": 80,
+    "communication": 84,
+    "knowledge": 70,
+    "hustle": 60
+  },
+  "visual": {
+    "skin": "light",
+    "hair": "practical_bob",
+    "outfit": "floral",
+    "hairColor": "#7B5A38",
+    "accessories": [
+      "cookies"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "open_house",
+    "characterScale": 0.99,
+    "offsetX": 0,
+    "offsetY": 2,
+    "outfitPalette": {
+      "main": "#5F4B76",
+      "dark": "#30233F",
+      "light": "#D8A85B",
+      "trim": "#FFDFA0"
+    }
+  },
+  "sortOrder": 100
+}

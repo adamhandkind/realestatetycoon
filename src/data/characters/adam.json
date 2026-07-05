@@ -1,0 +1,38 @@
+{
+  "id": "adam",
+  "name": "Adam McQuaig",
+  "title": "Car-Sandwich Operator",
+  "emoji": "🥪",
+  "color": "#C9A84C",
+  "cash": 52000,
+  "swagger": 6,
+  "quote": "We're not broke. We're pre-leveraged.",
+  "stats": {
+    "looks": 55,
+    "charisma": 64,
+    "communication": 58,
+    "knowledge": 62,
+    "hustle": 72
+  },
+  "visual": {
+    "skin": "medium",
+    "hair": "short_messy",
+    "outfit": "starter",
+    "hairColor": "#151515",
+    "accessories": []
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "open_house",
+    "characterScale": 1,
+    "offsetX": 0,
+    "offsetY": 0,
+    "outfitPalette": {
+      "main": "#3B3A46",
+      "dark": "#1D1D25",
+      "light": "#5A5968",
+      "trim": "#C9A84C"
+    }
+  },
+  "sortOrder": 10
+}

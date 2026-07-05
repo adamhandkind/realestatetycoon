@@ -1,0 +1,41 @@
+{
+  "id": "gary_melnyk",
+  "name": "Gary Melnyk",
+  "title": "The Knowledge Machine",
+  "emoji": "📚",
+  "color": "#66B7FF",
+  "cash": 42000,
+  "swagger": 2,
+  "quote": "Did you read the disclosure docs or just emotionally vibe with the basement?",
+  "stats": {
+    "looks": 5,
+    "charisma": 40,
+    "communication": 78,
+    "knowledge": 100,
+    "hustle": 27
+  },
+  "visual": {
+    "skin": "light",
+    "hair": "side_part",
+    "outfit": "compliance",
+    "hairColor": "#5A4630",
+    "accessories": [
+      "glasses",
+      "clipboard"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "open_house",
+    "characterScale": 0.96,
+    "offsetX": -1,
+    "offsetY": 4,
+    "outfitPalette": {
+      "main": "#28455F",
+      "dark": "#102233",
+      "light": "#6FA3C7",
+      "trim": "#66B7FF"
+    }
+  },
+  "sortOrder": 60
+}

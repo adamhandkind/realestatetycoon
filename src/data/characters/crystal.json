@@ -1,0 +1,41 @@
+{
+  "id": "crystal",
+  "name": "Crystal DeLuca",
+  "title": "Luxury Lead Predator",
+  "emoji": "💎",
+  "color": "#E87ACA",
+  "cash": 64000,
+  "swagger": 14,
+  "quote": "If the client asks the price, they are not the client.",
+  "stats": {
+    "looks": 86,
+    "charisma": 78,
+    "communication": 68,
+    "knowledge": 48,
+    "hustle": 54
+  },
+  "visual": {
+    "skin": "light",
+    "hair": "luxury_long",
+    "outfit": "linen",
+    "hairColor": "#D6A934",
+    "hairHighlight": "#FFE28A",
+    "accessories": [
+      "diamond_studs"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "power_stance",
+    "characterScale": 1.02,
+    "offsetX": 0,
+    "offsetY": -2,
+    "outfitPalette": {
+      "main": "#EDE3C7",
+      "dark": "#BFB48D",
+      "light": "#FFF7DF",
+      "trim": "#E87ACA"
+    }
+  },
+  "sortOrder": 20
+}

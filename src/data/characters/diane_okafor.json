@@ -1,0 +1,40 @@
+{
+  "id": "diane_okafor",
+  "name": "Diane Okafor",
+  "title": "The Veteran",
+  "emoji": "🧠",
+  "color": "#4ABFB0",
+  "cash": 72000,
+  "swagger": 10,
+  "quote": "I’ve seen this market do everything. Twice. Sit down.",
+  "stats": {
+    "looks": 58,
+    "charisma": 72,
+    "communication": 86,
+    "knowledge": 94,
+    "hustle": 58
+  },
+  "visual": {
+    "skin": "dark",
+    "hair": "sharp_bob",
+    "outfit": "bespoke",
+    "hairColor": "#0A0A0A",
+    "accessories": [
+      "tablet"
+    ]
+  },
+  "buffs": [],
+  "phaser": {
+    "defaultPose": "power_stance",
+    "characterScale": 1.02,
+    "offsetX": 0,
+    "offsetY": -1,
+    "outfitPalette": {
+      "main": "#15151A",
+      "dark": "#030305",
+      "light": "#303039",
+      "trim": "#4ABFB0"
+    }
+  },
+  "sortOrder": 80
+}
